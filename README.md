@@ -37,7 +37,7 @@ npm install
 ```
 ```
 # Khởi chạy app
-npm expo start --tunnel --clear
+npx expo start --tunnel --clear
 ```
 📱 Sử dụng Expo Go để quét mã QR và chạy trên điện thoại
 
