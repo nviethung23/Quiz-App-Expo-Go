@@ -40,11 +40,9 @@ export function Header({
   const scrollViewRef = useRef<ScrollView & View>(null);
   const { width: screenWidth } = useWindowDimensions();
 
-  // On the first render (question 1), the ref will be null. The ref will be set asynchronously
-  // in the onLayout callback which should be called before the user scrolls to the next question.
   if (offSetX.current !== null) {
     const offSet = offSetX.current;
-    const boxWidth = 28 + 2 * 8;
+    const boxWidth = 36 + 2 * 10;
     const currentBoxPosition = offSet + current * boxWidth + boxWidth / 2;
     const isBeforeMiddle = currentBoxPosition < screenWidth / 2;
 
@@ -56,27 +54,40 @@ export function Header({
       animated: true,
     });
   }
+
   const numberComponents = [...Array(numOfQuestions).keys()].map((index) => {
     const color = (() => {
-      if (current === index) return "#fcd34d";
-      else if (correct.includes(index)) return "#86efac";
-      else if (incorrect.includes(index)) return "#fca5a5";
-      else return "#e5e5e5";
+      if (current === index) return "#FACC15";
+      else if (correct.includes(index)) return "#4ADE80";
+      else if (incorrect.includes(index)) return "#F87171";
+      else return "#E5E7EB";
     })();
     return (
-      <Pressable key={index} onPress={() => onQuestionTouch(index)}>
-        <View
-          style={[
-            header.circle,
-            {
-              backgroundColor: color,
-            },
-          ]}>
-          <Text style={header.text}>{index + 1}</Text>
-        </View>
-      </Pressable>
+      <Pressable
+  key={index}
+  onPress={() => {
+    if (index >= current) {
+      onQuestionTouch(index);
+    }
+  }}
+  disabled={index < current} // ✅ Chặn bấm các câu trước
+>
+  <View
+    style={[
+      header.circle,
+      {
+        backgroundColor: color,
+        opacity: index < current ? 0.4 : 1, // Làm mờ nếu đã qua
+      },
+    ]}
+  >
+    <Text style={header.text}>{index + 1}</Text>
+  </View>
+</Pressable>
+
     );
   });
+
   return (
     <HeaderContainer>
       <View style={header.root}>
@@ -106,30 +117,40 @@ const header = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     paddingVertical: Platform.select({
-      android: 8,
-      default: 0,
+      android: 10,
+      default: 12,
     }),
+    paddingHorizontal: 12,
+    backgroundColor: "#F9FAFB",
+    borderBottomWidth: 1,
+    borderColor: "#E5E7EB",
   },
   scrollView: {
     flexGrow: 1,
-    marginRight: 16,
+    marginLeft: 8,
   },
   circle: {
-    width: 28,
-    height: 28,
-    borderRadius: 14,
+    width: 36,
+    height: 36,
+    borderRadius: 18,
     justifyContent: "center",
     alignItems: "center",
-    marginHorizontal: 8,
+    marginHorizontal: 6,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
   text: {
-    fontSize: 12,
-    fontWeight: "600",
+    fontSize: 14,
+    fontWeight: "700",
+    color: "#1F2937",
   },
 });
 
 const headerContainer = StyleSheet.create({
   root: {
-    backgroundColor: "#fff",
+    backgroundColor: "#F9FAFB",
   },
 });

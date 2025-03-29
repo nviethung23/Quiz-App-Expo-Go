@@ -1,31 +1,76 @@
 import { ResultScreenProps } from "../types";
-import { StyleSheet, Text, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Animated,
+  Easing,
+  Image,
+} from "react-native";
 import { ResultsCard, TimeSpentCard, Button } from "./components";
 import { SafeAreaBox } from "../../components";
+import { useEffect, useRef } from "react";
+import ConfettiCannon from "react-native-confetti-cannon";
 
 export function ResultScreen({ navigation, route }: ResultScreenProps) {
   const { correctAnswers, totalQuestions, timeTaken } = route.params;
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 800,
+      easing: Easing.out(Easing.exp),
+      useNativeDriver: true,
+    }).start();
+  }, []);
+
+  const percentage = Math.round((correctAnswers / totalQuestions) * 100);
 
   return (
     <SafeAreaBox>
       <View style={results.root}>
-        <View style={results.cardContainer}>
-          <Text style={results.resultsText}>Results</Text>
+        {/* 🎉 Pháo giấy ăn mừng */}
+        <ConfettiCannon
+          count={200}
+          origin={{ x: 180, y: 0 }}
+          fadeOut={true}
+          autoStart={true}
+          fallSpeed={2500}
+          explosionSpeed={400}
+        />
+
+        {/* Thẻ chúc mừng */}
+        <Animated.View style={[results.celebrate, { opacity: fadeAnim }]}>
+          <Image
+            source={require("../../../assets/images/trophy.png")}
+            style={results.image}
+          />
+          <Text style={results.title}>🎉 Chúc mừng bạn!</Text>
+          <Text style={results.subtitle}>
+            Bạn đã hoàn thành bài kiểm tra!
+          </Text>
+        </Animated.View>
+
+        {/* Kết quả */}
+        <Animated.View style={[results.cardContainer, { opacity: fadeAnim }]}>
           <ResultsCard
             correctAnswers={correctAnswers}
             totalQuestions={totalQuestions}
           />
           <TimeSpentCard timeTaken={timeTaken} />
-        </View>
+          <Text style={results.scoreText}>🎯 {percentage}% chính xác</Text>
+        </Animated.View>
 
-        <View style={results.buttonContainer}>
+        {/* Nút quay về */}
+        <Animated.View style={[results.buttonContainer, { opacity: fadeAnim }]}>
           <Button
-            text="Return home"
-            textColor="#fafafa"
-            backgroundColor="#fbbf24"
+            text="🏠 Quay lại trang chủ"
+            textColor="#fff"
+            backgroundColor="#4F46E5"
             onPress={() => navigation.navigate("Home")}
           />
-        </View>
+        </Animated.View>
       </View>
     </SafeAreaBox>
   );
@@ -33,32 +78,39 @@ export function ResultScreen({ navigation, route }: ResultScreenProps) {
 
 const results = StyleSheet.create({
   root: {
-    height: "100%",
-    marginHorizontal: 16,
+    flex: 1,
+    padding: 20,
+    justifyContent: "space-evenly",
+    backgroundColor: "#F9FAFB",
+  },
+  celebrate: {
     alignItems: "center",
-    justifyContent: "space-around",
-  },
-  cardContainer: {
-    width: "100%",
-    gap: 16,
-  },
-  buttonContainer: {
-    width: "100%",
     gap: 8,
   },
-  resultsText: {
-    fontSize: 24,
-    fontWeight: "700",
-    alignSelf: "center",
+  image: {
+    width: 80,
+    height: 80,
+    marginBottom: 12,
   },
-  button: {
-    padding: 16,
-    width: "100%",
-    borderRadius: 8,
-  },
-  buttonText: {
-    fontSize: 14,
+  title: {
+    fontSize: 26,
     fontWeight: "700",
-    alignSelf: "center",
+    color: "#1E3A8A",
+  },
+  subtitle: {
+    fontSize: 16,
+    color: "#6B7280",
+  },
+  cardContainer: {
+    gap: 20,
+    alignItems: "center",
+  },
+  buttonContainer: {
+    marginTop: 16,
+  },
+  scoreText: {
+    fontSize: 18,
+    fontWeight: "600",
+    color: "#10B981",
   },
 });
