@@ -50,6 +50,8 @@ npx expo export --platform android
 
 # Build iOS
 npx expo export --platform ios
+
+```
 📂 Cấu trúc thư mục
 bash
 Sao chép
@@ -64,7 +66,6 @@ Chỉnh sửa
 │   └── HomeScreen, TestScreen, ResultScreen
 ├── App.js
 └── README.md
-✨ Giao diện
 
 📬 Đóng góp
 Pull request hoặc feedback luôn được chào đón 🙌
@@ -73,17 +74,3 @@ Liên hệ: [your-email@example.com]
 ⭐ Credits
 Phát triển bởi: nviethung23 và team ❤️
 Demo: React Native App UI lấy cảm hứng từ quiz.com
-
-less
-Sao chép
-Chỉnh sửa
-
----
-
-Bạn có thể:
-
-✅ Tạo file `README.md` trong thư mục gốc  
-✅ Dán nội dung trên vào  
-✅ Và khi đẩy lên GitHub, repo của bạn sẽ có trang mô tả đẹp mắt.
-
-Muốn mình tạo file đó sẵn và gửi lại cho bạn không?
