@@ -5,7 +5,6 @@ import { HomeStackParamList } from "./src/screens/types";
 import { HomeScreen, ResultScreen, TestScreen } from "./src/screens";
 
 const Stack = createNativeStackNavigator<HomeStackParamList>();
-
 export default function App() {
   return (
     <NavigationContainer>
