@@ -30,27 +30,30 @@ Một ứng dụng quiz đa chủ đề được xây dựng với **React Nativ
 # Clone project
 git clone https://github.com/tenban/quiz-app-demo.git
 cd quiz-app-demo
-
+```
+```
 # Cài đặt dependencies
-npm install
-
+npm install 
+```
+```
 # Khởi chạy app
-npm start
+npm expo start --tunnel --clear
+```
 📱 Sử dụng Expo Go để quét mã QR và chạy trên điện thoại
 
 📦 Build APK hoặc IPA
-bash
-Sao chép
-Chỉnh sửa
+```bash
 # Cần cài đặt expo-cli
 npm install -g expo-cli
-
+```
+```
 # Build Android
 npx expo export --platform android
-
+```
+```
 # Build iOS
 npx expo export --platform ios
-
+```
 ```
 📂 Cấu trúc thư mục
 bash
@@ -66,7 +69,7 @@ Chỉnh sửa
 │   └── HomeScreen, TestScreen, ResultScreen
 ├── App.js
 └── README.md
-
+```
 📬 Đóng góp
 Pull request hoặc feedback luôn được chào đón 🙌
 Liên hệ: [your-email@example.com]
