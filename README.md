@@ -72,7 +72,7 @@ Chỉnh sửa
 ```
 📬 Đóng góp
 Pull request hoặc feedback luôn được chào đón 🙌
-Liên hệ: [your-email@example.com]
+Liên hệ: [nviethung23@gmail.com]
 
 ⭐ Credits
 Phát triển bởi: nviethung23 và team ❤️
