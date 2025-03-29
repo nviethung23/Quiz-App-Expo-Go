@@ -1,18 +1,39 @@
-# React Native Quiz App
+# 🧠 Quiz App - React Native
 
-## Overview
+Một ứng dụng quiz đa chủ đề được xây dựng với **React Native** (Expo), cung cấp giao diện đẹp mắt, hiệu ứng mượt mà và âm thanh sinh động. Dành cho người dùng yêu thích kiểm tra kiến thức hoặc giải trí với các câu hỏi thú vị.
 
-The React Native Quiz App is a mobile application developed using React Native and Expo. This app provides an engaging and interactive quiz experience for users. With a user-friendly interface, it allows players to answer a series of quiz questions. The app is built to be easily deployable, thanks to Expo's tools and services.
+## 🚀 Tính năng nổi bật
 
-### Demo Video
+- 🎨 Giao diện thân thiện, trực quan như quiz.com
+- 🧪 Nhiều bộ đề thú vị:
+  - Vua Tiếng Việt
+  - Thần đồng âm nhạc
+  - Mát Tơ Chép (Ẩm thực)
+  - Ôn tập React Native & Flutter
+- 🧏‍♂️ Hiệu ứng âm thanh khi chọn đúng/sai
+- ⏱ Mỗi câu hỏi có **30s** đếm ngược
+- ✅ Tự động chuyển câu sau khi chọn đáp án
+- 🎉 Hiệu ứng mưa hoa giấy khi hoàn thành bài test
+- 📊 Màn hình kết quả chi tiết (số câu đúng, thời gian)
 
-https://github.com/smite1921/quiz-app/assets/43019533/2c1595e3-61f5-480e-a84b-c465495446f7
+## 🧑‍💻 Công nghệ sử dụng
 
+- **React Native + Expo**
+- `react-native-pager-view` (cho hiệu ứng lật câu hỏi)
+- `expo-av` (âm thanh đúng/sai)
+- `react-native-confetti-cannon` (mưa hoa giấy)
+- TypeScript hoặc JavaScript (có thể build song song)
 
-### Project Motivation
+## 🛠 Cài đặt và chạy ứng dụng
 
-This project was created with the primary goal of helping me learn React Native. The codebase is structured to be beginner-friendly, making it a valuable resource for others interested in learning React Native.
+```bash
+# Clone project
+git clone https://github.com/tenban/quiz-app-demo.git
+cd quiz-app-demo
 
-Whether you're a quiz enthusiast or a developer looking to explore React Native, this app is a fun and educational project to get started with.
+# Cài đặt dependencies
+npm install
 
-<img src="https://user-images.githubusercontent.com/43019533/95948979-b5815a00-0dbf-11eb-9d4b-6447b7d89340.png" width=300/>
+# Khởi chạy app
+npm start
+
