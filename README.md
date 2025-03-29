@@ -28,8 +28,8 @@ Một ứng dụng quiz đa chủ đề được xây dựng với **React Nativ
 
 ```bash
 # Clone project
-git clone https://github.com/tenban/quiz-app-demo.git
-cd quiz-app-demo
+git clone https://github.com/nviethung23/Quiz-App-Expo-Go.git
+cd Quiz-App-Expo-Go
 ```
 ```
 # Cài đặt dependencies
